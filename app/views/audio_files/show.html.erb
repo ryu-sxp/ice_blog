@@ -1,0 +1,20 @@
+<p>
+  <strong>Name:</strong>
+  <%= @audio_file.name %>
+</p>
+
+<% if @audio_file.item.present? %>
+  <audio controls>
+    <source src="<%= @audio_file.item_url %>"
+      type="<%= @audio_file.item.content_type %>">
+    Your browser does not support the audio element.
+  </audio> 
+<% end %>
+
+<p>
+  <strong>Item:</strong>
+  <%= @audio_file.item %>
+</p>
+
+<%= link_to 'Edit', edit_audio_file_path(@audio_file) %> |
+<%= link_to 'Back', audio_files_path %>

@@ -1,0 +1,6 @@
+<h1>Upload Draft</h1>
+<%= form_with url: upload_blog_post_path, local: true,
+  html: {'multipart' => true} do |form| %>
+  <%= form.file_field :draft_file, class: 'form-control' %>
+  <%= form.submit %>
+<% end %>

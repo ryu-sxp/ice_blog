@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @blog_post_draft.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @blog_post_draft.content %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @blog_post_draft.published %>
+</p>
+
+<%= link_to 'Edit', edit_blog_post_draft_path(@blog_post_draft) %> |
+<%= link_to 'Back', blog_post_drafts_path %>

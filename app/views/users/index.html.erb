@@ -1,0 +1,41 @@
+<% provide(:title, 'All users') %>
+<h1>Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Admin</th>
+      <th>Activated</th>
+      <th>Forum URL</th>
+      <th>Avatar</th>
+      <th>About</th>
+      <th>Social Media</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+        <td><%= user.activated %></td>
+        <td><%= user.forum_url %></td>
+        <td><%= user.avatar %></td>
+        <td><%= user.about %></td>
+        <td>
+          <%= user.social_media_links.each do |sml| %>
+            <%= sml.name %>: <a href="<%= sml.url %>"><%= sml.text %></a><br>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete,
+          data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

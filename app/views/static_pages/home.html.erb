@@ -1,0 +1,17 @@
+<% provide(:title, "Home") %>
+<h1>Sample App</h1>
+<p>
+  This is the home page for the
+      sample application.
+</p>
+
+<% if logged_in? %>
+  <%= link_to "Log out", logout_path, method: :delete %><br>
+  <%= link_to "Edit profile", edit_user_path(current_user) %>
+  <!--
+  <%= link_to "User index", users_path %>
+  -->
+<% else %>
+  <%= link_to "Log in", login_path %>
+<% end %>
+

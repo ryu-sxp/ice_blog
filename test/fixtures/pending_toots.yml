@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message: MyString
+  source_model: MyString
+  source_id: 1
+  media_id: 1
+  requires_file: false
+
+two:
+  message: MyString
+  source_model: MyString
+  source_id: 1
+  media_id: 1
+  requires_file: false

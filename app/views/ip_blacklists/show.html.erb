@@ -1,0 +1,12 @@
+<p>
+  <strong>Ip:</strong>
+  <%= @ip_blacklist.ip %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @ip_blacklist.duration %>
+</p>
+
+<%= link_to 'Edit', edit_ip_blacklist_path(@ip_blacklist) %> |
+<%= link_to 'Back', ip_blacklists_path %>

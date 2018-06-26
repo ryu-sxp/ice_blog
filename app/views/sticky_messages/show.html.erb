@@ -1,0 +1,27 @@
+<p>
+  <strong>Content:</strong>
+  <%= @sticky_message.content %>
+</p>
+
+<p>
+  <strong>Draft:</strong>
+  <%= @sticky_message.draft %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @sticky_message.published %>
+</p>
+
+<p>
+  <strong>Important:</strong>
+  <%= @sticky_message.important %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sticky_message.user %>
+</p>
+
+<%= link_to 'Edit', edit_sticky_message_path(@sticky_message) %> |
+<%= link_to 'Back', sticky_messages_path %>

@@ -1,0 +1,34 @@
+<%= form_with(model: blog_post, local: true) do |form| %>
+  <% if blog_post.errors.any? || @cat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog_post.errors.count+@cat.errors.count,
+                        "error") %> prohibited this blog_post from being
+                         saved:</h2>
+
+      <ul>
+      <% blog_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      <% @cat.errors.full_messages.each do |message| %>
+        <li>(category) <%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :icon %>
+  <%= image_tag(blog_post.icon_url) if blog_post.icon? %>
+  <%= form.file_field :icon, class: 'form-control' %>
+  <%= form.hidden_field :icon_cache %>
+  <%= form.check_box :remove_icon %>
+  <span>Remove icon</span>
+
+  <div class="field">
+    <%= form.label :draft %>
+    <%= form.text_area :draft, id: :blog_post_draft %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

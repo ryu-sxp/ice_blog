@@ -1,0 +1,28 @@
+<% i = 0 %>
+<% @stickies.each do |sticky| %>
+  <% next if important_only && !sticky.important%>
+  <% if i == 0 %>
+    <div id="stickies">
+  <% end %>
+  <div class="content-element micropost sticky">
+    <img class="post-icon" src ="<%= sticky.user.avatar_url %>"
+      alt="avatar">
+    <span class="post-title">
+        <%= link_to sticky.user.name, profile_path(sticky.user),
+            class: "profile-link" %>
+    </span>
+    <span class="post-date">
+          [sticky]
+    </span>
+    <% unless sticky.published %>
+      <span class="mark-unpublished">(unpublished)</span>
+    <% end %>
+    <div class="large-post-content">
+      <%= raw sticky.content %>
+    </div>
+  </div><br>
+  <% i += 1 %>
+<% end %>
+<% if i > 0 %>
+  </div>
+<% end %>

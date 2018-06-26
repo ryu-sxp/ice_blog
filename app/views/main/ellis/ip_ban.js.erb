@@ -1,0 +1,9 @@
+form_container = document.getElementById("ip-ban-form-"+
+    "<%= @comment_id %>");
+<% if @status %>
+    form_container.innerHTML =
+        "[ ip has been added to the banlist ]";
+<% else%>
+    form_container.innerHTML =
+        "<%= escape_javascript(render("main/#{@theme}/ip_ban_form")) %>";
+<% end %>

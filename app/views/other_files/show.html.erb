@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @other_file.name %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @other_file.item %>
+</p>
+
+<%= link_to 'Edit', edit_other_file_path(@other_file) %> |
+<%= link_to 'Back', other_files_path %>

@@ -1,0 +1,33 @@
+<% if @post_status == "ok" %>
+    <% if @spam_status == 0 %>
+        IceBlog.closeModal();
+        IceBlog.loadComments('<%= @comment.source_model %>',
+            <%= @comment.source_id %>);
+    <% end %>
+    <% if @spam_status == 1 %>
+        <% @comment.errors[:base] << 
+            "A machine deemed your comment to be spam. Sorry if it was wrong!"
+        %>
+        <% @post_status = 'fail' %>
+    <% end %>
+    <% if @spam_status == 2 %>
+        <% @comment.errors[:base] << 
+            "The spamcheck request failed."
+        %>
+        <% @post_status = 'fail' %>
+    <% end %>
+<% end %>
+
+<% if @post_status == "fail" %>
+modal_background = document.getElementById("modal-bg");
+modal_content = document.getElementById("modal-content");
+modal_background.style.display = "block";
+modal_content.innerHTML = 
+    "<div class='comment-form' "+
+       " id='comment-form<%= @source_model%>-<%= @source_id %>'>"+
+    "<%= escape_javascript(render("main/#{@theme}/comment_form",
+                                  micropost: { source_model: @source_model,
+                                               source_id: @source_id},
+                                  reply_id: 0)) %>"+
+    "</div>";
+<% end %>

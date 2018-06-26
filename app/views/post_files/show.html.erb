@@ -1,0 +1,22 @@
+<p>
+  <strong>Name:</strong>
+  <%= @post_file.name %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @post_file.item %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @post_file.type %>
+</p>
+
+<p>
+  <strong>Image dimensions:</strong>
+  <%= @post_file.image_dimensions %>
+</p>
+
+<%= link_to 'Edit', edit_post_file_path(@post_file) %> |
+<%= link_to 'Back', post_files_path %>

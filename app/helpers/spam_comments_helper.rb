@@ -1,0 +1,2 @@
+module SpamCommentsHelper
+end

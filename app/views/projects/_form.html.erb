@@ -1,0 +1,39 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? || @header.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count+@header.errors.count,
+                        "error") %> prohibited this project from being 
+                        saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      <% @header.errors.full_messages.each do |message| %>
+        <li>(header) <%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :project_name %>
+  </div>
+  
+  <%= form.label :icon %>
+  <%= image_tag(project.icon_url) if project.icon? %>
+  <%= form.file_field :icon, class: 'form-control' %>
+  <%= form.hidden_field :icon_cache %>
+  <%= form.check_box :remove_icon %>
+  <span>Remove icon</span>
+
+  <div class="field">
+    <%= form.label :draft %>
+    <%= form.text_area :draft, id: :project_draft %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

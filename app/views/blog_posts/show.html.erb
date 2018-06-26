@@ -1,0 +1,32 @@
+<p>
+  <strong>Name:</strong>
+  <%= @blog_post.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog_post.title %>
+</p>
+
+<p>
+  <strong>Category ID:</strong>
+  <%= @blog_post.blog_category_id %>
+</p>
+
+<p>
+  <strong>Published date:</strong>
+  <%= @blog_post.published_date %>
+</p>
+
+<p>
+  <strong>Preview:</strong>
+  <%= @blog_post.preview %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @blog_post.published %>
+</p>
+
+<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+<%= link_to 'Back', blog_posts_path %>

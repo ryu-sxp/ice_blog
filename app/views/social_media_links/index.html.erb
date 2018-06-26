@@ -1,0 +1,31 @@
+<h1>Social Media Links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Text</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @social_media_links.each do |social_media_link| %>
+      <tr>
+        <td><%= social_media_link.name %></td>
+        <td><%= social_media_link.url %></td>
+        <td><%= social_media_link.text %></td>
+        <td><%= social_media_link.user %></td>
+        <td><%= link_to 'Show', social_media_link %></td>
+        <td><%= link_to 'Edit', edit_social_media_link_path(social_media_link) %></td>
+        <td><%= link_to 'Destroy', social_media_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Social Media Link', new_social_media_link_path %>

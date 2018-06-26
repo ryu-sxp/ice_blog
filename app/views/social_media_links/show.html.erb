@@ -1,0 +1,22 @@
+<p>
+  <strong>Name:</strong>
+  <%= @social_media_link.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @social_media_link.url %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @social_media_link.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @social_media_link.user %>
+</p>
+
+<%= link_to 'Edit', edit_social_media_link_path(@social_media_link) %> |
+<%= link_to 'Back', social_media_links_path %>

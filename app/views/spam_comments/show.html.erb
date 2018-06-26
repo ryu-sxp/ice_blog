@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @spam_comment.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @spam_comment.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @spam_comment.website %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @spam_comment.content %>
+</p>
+
+<p>
+  <strong>Blog spam result:</strong>
+  <%= @spam_comment.blog_spam_result %>
+</p>
+
+<p>
+  <strong>Blog spam reason:</strong>
+  <%= @spam_comment.blog_spam_reason %>
+</p>
+
+<p>
+  <strong>Blog spam blocker:</strong>
+  <%= @spam_comment.blog_spam_blocker %>
+</p>
+
+<p>
+  <strong>Blog spam version:</strong>
+  <%= @spam_comment.blog_spam_version %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @spam_comment.ip %>
+</p>
+
+<p>
+  <strong>Useragent:</strong>
+  <%= @spam_comment.useragent %>
+</p>
+
+<%= link_to 'Edit', edit_spam_comment_path(@spam_comment) %> |
+<%= link_to 'Back', spam_comments_path %>

@@ -1,0 +1,2 @@
+module MicropostDraftsHelper
+end

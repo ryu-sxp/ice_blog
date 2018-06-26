@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spam Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Content</th>
+      <th>Blog spam result</th>
+      <th>Blog spam reason</th>
+      <th>Blog spam blocker</th>
+      <th>Blog spam version</th>
+      <th>Ip</th>
+      <th>Useragent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spam_comments.each do |spam_comment| %>
+      <tr>
+        <td><%= spam_comment.name %></td>
+        <td><%= spam_comment.email %></td>
+        <td><%= spam_comment.website %></td>
+        <td><%= spam_comment.content %></td>
+        <td><%= spam_comment.blog_spam_result %></td>
+        <td><%= spam_comment.blog_spam_reason %></td>
+        <td><%= spam_comment.blog_spam_blocker %></td>
+        <td><%= spam_comment.blog_spam_version %></td>
+        <td><%= spam_comment.ip %></td>
+        <td><%= spam_comment.useragent %></td>
+        <td><%= link_to 'Show', spam_comment %></td>
+        <td><%= link_to 'Edit', edit_spam_comment_path(spam_comment) %></td>
+        <td><%= link_to 'Destroy', spam_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spam Comment', new_spam_comment_path %>

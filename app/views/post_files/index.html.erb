@@ -1,0 +1,31 @@
+<h1>Post Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Item</th>
+      <th>Type</th>
+      <th>Image dimensions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post_files.each do |post_file| %>
+      <tr>
+        <td><%= post_file.name %></td>
+        <td><%= post_file.item %></td>
+        <td><%= post_file.type %></td>
+        <td><%= post_file.image_dimensions %></td>
+        <td><%= link_to 'Show', post_file %></td>
+        <td><%= link_to 'Edit', edit_post_file_path(post_file) %></td>
+        <td><%= link_to 'Destroy', post_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post File', new_post_file_path %>

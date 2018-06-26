@@ -1,0 +1,84 @@
+<% provide(:title, "Edit user") %>
+<% provide(:button_text, "Save changes") %>
+<h1>Update your profile</h1>
+
+<div class="form">
+
+  <%= form_for(@user, :html => { :multipart => true }) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+    
+    <%= f.label :forum_url %>
+    <%= f.text_field :forum_url, class: 'form-control' %>
+
+    <%= f.label :theme %>
+    <%= f.text_field :theme, class: 'form-control' %>
+    
+    <%= f.label :skin %>
+    <%= f.text_field :skin, class: 'form-control' %>
+
+    <%= f.label :blog_post_toot_visibility %>
+    <%= f.text_field :blog_post_toot_visibility, class: 'form-control' %>
+
+    <%= f.label :avatar %>
+    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+    <%= f.file_field :avatar, class: 'form-control' %>
+    <%= f.hidden_field :avatar_cache %>
+    <%= f.check_box :remove_avatar %>
+    <span>Remove avatar</span>
+    
+    <%= f.label :site_icon %>
+    <%= image_tag(@user.site_icon_url) if @user.site_icon? %>
+    <%= f.file_field :site_icon, class: 'form-control' %>
+    <%= f.hidden_field :site_icon_cache %>
+    <%= f.check_box :remove_site_icon %>
+    <span>Remove Site Icon</span>
+    
+    <%= f.label :site_banner %>
+    <%= f.file_field :site_banner, class: 'form-control' %>
+    <%= f.hidden_field :site_banner_cache %>
+    <%= f.check_box :remove_site_banner %>
+    <span>Remove Site Banner</span>
+
+    <div class="field">
+      <%= f.check_box :tweet_posts %>
+      <span>Post to mastodon?</span>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :comment_flag %>
+      <span>Allow comments?</span>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :blog_spam_flag %>
+      <span>Use blogspam.net checking?</span>
+    </div>
+
+    <%= f.label :about %>
+    <%= f.text_area :about, class: 'form-control' %>
+
+    <%= f.label :bio_draft %>
+    <%= f.text_area :bio_draft, class: 'form-control' %>
+
+    <%= f.label :site_name %>
+    <%= f.text_field :site_name, class: 'form-control' %>
+
+    <%= f.label :site_slogan %>
+    <%= f.text_field :site_slogan, class: 'form-control' %>
+
+    <%= f.label :meta_keywords %>
+    <%= f.text_field :meta_keywords, class: 'form-control' %>
+
+    <%= f.label :meta_desc %>
+    <%= f.text_field :meta_desc, class: 'form-control' %>
+
+    <%= f.submit yield(:button_text), class: "form-btn" %>
+  <% end %>
+
+</div>

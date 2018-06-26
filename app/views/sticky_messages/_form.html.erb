@@ -1,0 +1,32 @@
+<%= form_with(model: sticky_message, local: true) do |form| %>
+  <% if sticky_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sticky_message.errors.count, "error") %> prohibited this sticky_message from being saved:</h2>
+
+      <ul>
+      <% sticky_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :draft %>
+    <%= form.text_area :draft, id: :sticky_message_draft %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published %>
+    <%= form.check_box :published, id: :sticky_message_published %>
+  </div>
+
+  <div class="field">
+    <%= form.label :important %>
+    <%= form.check_box :important, id: :sticky_message_important %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  referer: MyString
+  useragent: MyString
+  request: MyString
+  new_visitor: false
+
+two:
+  referer: MyString
+  useragent: MyString
+  request: MyString
+  new_visitor: false

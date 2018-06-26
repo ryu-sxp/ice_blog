@@ -1,0 +1,67 @@
+<%= form_with(model: spam_comment, local: true) do |form| %>
+  <% if spam_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spam_comment.errors.count, "error") %> prohibited this spam_comment from being saved:</h2>
+
+      <ul>
+      <% spam_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :spam_comment_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :spam_comment_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website, id: :spam_comment_website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :spam_comment_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blog_spam_result %>
+    <%= form.text_field :blog_spam_result, id: :spam_comment_blog_spam_result %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blog_spam_reason %>
+    <%= form.text_field :blog_spam_reason, id: :spam_comment_blog_spam_reason %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blog_spam_blocker %>
+    <%= form.text_field :blog_spam_blocker, id: :spam_comment_blog_spam_blocker %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blog_spam_version %>
+    <%= form.text_field :blog_spam_version, id: :spam_comment_blog_spam_version %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ip %>
+    <%= form.text_field :ip, id: :spam_comment_ip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :useragent %>
+    <%= form.text_field :useragent, id: :spam_comment_useragent %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Project Drafts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Content</th>
+      <th>Published</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project_drafts.each do |project_draft| %>
+      <tr>
+        <td><%= project_draft.name %></td>
+        <td><%= project_draft.content %></td>
+        <td><%= project_draft.published %></td>
+        <td><%= link_to 'Show', project_draft %></td>
+        <td><%= link_to 'Edit', edit_project_draft_path(project_draft) %></td>
+        <td><%= link_to 'Destroy', project_draft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project Draft', new_project_draft_path %>

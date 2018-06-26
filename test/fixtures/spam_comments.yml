@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  website: MyString
+  content: MyText
+  blog_spam_result: MyString
+  blog_spam_reason: MyString
+  blog_spam_blocker: MyString
+  blog_spam_version: MyString
+  ip: MyString
+  useragent: MyString
+
+two:
+  name: MyString
+  email: MyString
+  website: MyString
+  content: MyText
+  blog_spam_result: MyString
+  blog_spam_reason: MyString
+  blog_spam_blocker: MyString
+  blog_spam_version: MyString
+  ip: MyString
+  useragent: MyString

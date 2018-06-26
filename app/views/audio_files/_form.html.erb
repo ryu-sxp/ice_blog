@@ -1,0 +1,20 @@
+<%= form_with(model: audio_file, local: true) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+
+  <div class="field">
+    <%= form.label :item %>
+    <% if audio_file.item.present? %>
+      <audio controls>
+        <source src="<%= audio_file.item_url %>"
+          type="<%= audio_file.item.content_type %>">
+        Your browser does not support the audio element.
+      </audio> 
+<% end %>
+    <%= form.file_field :item, class: 'form-control' %>
+    <%= form.hidden_field :item_cache %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

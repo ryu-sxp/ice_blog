@@ -1,0 +1,42 @@
+<%= form_with(model: pending_toot, local: true) do |form| %>
+  <% if pending_toot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pending_toot.errors.count, "error") %> prohibited this pending_toot from being saved:</h2>
+
+      <ul>
+      <% pending_toot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_field :message, id: :pending_toot_message %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source_model %>
+    <%= form.text_field :source_model, id: :pending_toot_source_model %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source_id %>
+    <%= form.number_field :source_id, id: :pending_toot_source_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :media_id %>
+    <%= form.number_field :media_id, id: :pending_toot_media_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :requires_file %>
+    <%= form.check_box :requires_file, id: :pending_toot_requires_file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

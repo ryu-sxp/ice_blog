@@ -1,0 +1,9 @@
+<%= render "main/#{@theme}/comments_menu" %>
+
+<% @comments.each do |com| %>
+  <%= render "main/#{@theme}/comment", comment: com %>
+<% end %>
+
+<% if @comments.count > 0 %>
+  <%= render "main/#{@theme}/comments_menu" %>
+<% end %>

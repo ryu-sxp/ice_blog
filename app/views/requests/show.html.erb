@@ -1,0 +1,32 @@
+<p>
+  <strong>Referer:</strong>
+  <%= @request.referer %>
+</p>
+
+<p>
+  <strong>Useragent:</strong>
+  <%= @request.useragent %>
+</p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @request.request %>
+</p>
+
+<p>
+  <strong>New visitor:</strong>
+  <%= @request.new_visitor %>
+</p>
+
+<p>
+  <strong>Is bot:</strong>
+  <%= @request.is_bot %>
+</p>
+
+<p>
+  <strong>Counter flag:</strong>
+  <%= @request.counter_flag %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

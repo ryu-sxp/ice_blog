@@ -1,0 +1,12 @@
+modal_background = document.getElementById("modal-bg");
+modal_content = document.getElementById("modal-content");
+modal_background.style.display = "block";
+modal_content.innerHTML = 
+    "<div class='comment-form' "+
+       " id='comment-form<%= @source_model%>-<%= @source_id %>'>"+
+    "<%= escape_javascript(render("main/#{@theme}/comment_form",
+                                  micropost: { source_model: @source_model,
+                                               source_id: @source_id},
+                                  reply_id: @reply_id)) %>"+
+    "</div>";
+

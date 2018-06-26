@@ -1,0 +1,29 @@
+<h1>Blog Post Drafts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Content</th>
+      <th>Published</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blog_post_drafts.each do |blog_post_draft| %>
+      <tr>
+        <td><%= blog_post_draft.name %></td>
+        <td><%= blog_post_draft.content %></td>
+        <td><%= blog_post_draft.published %></td>
+        <td><%= link_to 'Show', blog_post_draft %></td>
+        <td><%= link_to 'Edit', edit_blog_post_draft_path(blog_post_draft) %></td>
+        <td><%= link_to 'Destroy', blog_post_draft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blog Post Draft', new_blog_post_draft_path %>

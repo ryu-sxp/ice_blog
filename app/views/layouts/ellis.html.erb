@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @meta[:title] %></title>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="<%= @meta[:keywords] %>">
+    <meta name="description" content="<%= @meta[:desc] %>">
+    <meta name="author" content="<%= @data[:admin_name] %>">
+    <meta name="generator"
+          content="<%= @data[:site_name]+" (IceBlog "+IceBlog::version %>)">
+
+    <% unless @theme.nil? %>
+      <%= stylesheet_link_tag    "themes/#{@theme}/skins/#{@skin}",
+        media: 'all' %>
+    <% end %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "themes/#{@theme}" %>
+    <%= favicon_link_tag 'favicon.ico' %>
+
+  </head>
+
+  <body>
+    <div id="modal-bg" onclick="IceBlog.closeModal();">
+      <div id="modal">
+        <div id="modal-header">
+          <span class="large-text">close &times;</span>
+        </div>
+        <div id="modal-content">
+        </div>
+        <div id="modal-footer">
+          <span class="large-text">close &times;</span>
+        </div>
+      </div>
+    </div>
+  <!-- TOP SECTION START -->
+    <div id="top-fixture">
+      <!-- TITLE BAR -->
+      <header class="site-header">
+        <div id="title-grid">
+          <div id="title-text">
+            <a class="site-title" href="<%= root_url %>">
+              <% if @data[:site_icon_url] %>
+                <%= image_tag @data[:site_icon_url], id: 'site-icon'%>
+              <% end %>
+              <%= @data[:site_name] %>
+            </a>
+            <span class="site-slogan"><%= @data[:site_slogan] %></span>
+          </div>
+          <div id="title-rss">
+            <%= link_to render('rss.svg'), rss_feed_path(format: :rss)  %>
+          </div>
+        </div>
+      </header>
+      <% if @data[:site_banner_url] %>
+        <div id="banner-container">
+          <%= image_tag @data[:site_banner_url], id: 'banner' %>
+        </div>
+      <% end %>
+      <!-- TOP MENU -->
+      <%= render "main/#{@theme}/top_navigation" %>
+    </div>
+  <!-- TOP SECTION END -->
+  <!-- CENTER SECTION START -->
+    <div id="grid-container-middle">
+      <aside class="classic-menu">
+        <div class="menu-container">
+          <% unless request.bot? %>
+            <%= link_to @data[:admin_email], "mailto:#{@data[:admin_email]}",
+              class: 'mail-link' %>
+          <% end %>
+          <% if @data[:admin_icon_url] %>
+            <img class="avatar" src ="<%= @data[:admin_icon_url] %>"
+              alt="avatar">
+          <% end %>
+          <div class="about"><%= @data[:about] %></div>
+          <% if @data[:sml] %>
+            <ul class="menu-links">
+              <% @data[:sml].each do |sml| %>
+                <li class="menu-list-item">
+                  <%= link_to sml.text, sml.url, class: 'menu-link'%>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </aside>
+      <main id="content-area">
+        <% unless flash.empty? %>
+          <div class="content-element">
+            <% flash.each do |message_type, message| %>
+              <%= content_tag(:div, message,
+                              class: "alert alert-#{message_type}") %>
+            <% end %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </main>
+    </div>
+    <div id="mobile-sub-menu">
+      <%= render "main/#{@theme}/mobile_sub_menu" %>
+    </div>
+  <!-- CENTER SECTION END -->
+  <!-- FOOTER SECTION START -->
+  <%= render "main/#{@theme}/footer" %>
+      
+  </body>
+</html>

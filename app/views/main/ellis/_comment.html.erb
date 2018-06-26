@@ -1,0 +1,67 @@
+<% text = comment.content.gsub(/(^>.+$)/,
+                               "<span class='comment-quote'>\\0</span>") %>
+<div id="comment-<%= comment.id %>" class="comment">
+  <% if comment.moderator_id.present? %>
+    <% mod = User.find(comment.moderator_id) %>
+    <img class="comment-icon" src ="<%= mod.avatar_url %>"
+      alt="avatar">
+    <%= link_to mod.name, profile_path(mod),
+      class: "comment-name internal-link" %>
+  <% else %>
+    <% if comment.email.present? && !request.bot? %>
+      <a class="comment-name internal-link" href="mailto:<%= h(comment.email) %>">
+      <%= h(comment.name) %></a> 
+    <% else %>
+      <span class="comment-name"><%= h(comment.name) %></span> 
+    <% end %>
+    <% if comment.trip.present? %>
+      <span class="comment-trip"><%= comment.trip %></span> 
+    <% end %> 
+    <% if comment.website.present? %>
+      <% unless comment.website.start_with?('http') %>
+        <% comment.website.prepend('http://') %>
+      <% end %>
+      <a class="comment-website small-text" href="<%= h(comment.website) %>"
+         target="_blank" rel="noopener">[www]</a>
+    <% end %>
+  <% end %>
+  <span class="comment-date" title="<%= comment.created_at %>">
+    <%= time_ago_in_words(comment.created_at) %> ago
+  </span> 
+  <%= link_to "##{comment.id}",
+    comment_form_url(source_model: comment.source_model,
+                     source_id: comment.source_id,
+                     reply_id: comment.id,
+                     format: :js),
+    class: "internal-link comment-id",
+    title: "Reply to this comment",
+    remote: true  %>
+  
+  <%= simple_format(auto_link(h(text)), class: 'comment-content') %>
+
+  <% if @current_user && @current_user.admin? %>
+    <div class="comment-mod-options">
+      <%= link_to 'Delete', comment_url(comment, format: :js), remote: true, 
+        method: :delete,
+        class: "internal-link small-text", data: {
+        confirm: 'Are you sure you want to delete this comment?' } %> | 
+      <%= link_to 'Edit', edit_comment_path(comment),
+        class: "internal-link small-text" %> | 
+      <% if comment.ip.present? %>
+        <% if IpBlacklist.where(ip: comment.ip).count == 0 %>
+        <a href="#here" class="internal-link small-text"
+          onclick="IceBlog.showElement(
+          'ip-ban-form-<%= comment.id %>', 'block')">
+        Ban IP</a>
+        <% else%>
+          <span class="small-text disabled-link">Currently banned</span>
+        <% end %>
+        <div 
+          id="ip-ban-form-<%= comment.id %>"
+          class="ip-ban-form">
+          <%= render "main/#{@theme}/ip_ban_form", comment: comment %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div><br>

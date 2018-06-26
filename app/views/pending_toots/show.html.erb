@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @pending_toot.message %>
+</p>
+
+<p>
+  <strong>Source model:</strong>
+  <%= @pending_toot.source_model %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @pending_toot.source_id %>
+</p>
+
+<p>
+  <strong>Media:</strong>
+  <%= @pending_toot.media_id %>
+</p>
+
+<p>
+  <strong>Requires file:</strong>
+  <%= @pending_toot.requires_file %>
+</p>
+
+<%= link_to 'Edit', edit_pending_toot_path(@pending_toot) %> |
+<%= link_to 'Back', pending_toots_path %>

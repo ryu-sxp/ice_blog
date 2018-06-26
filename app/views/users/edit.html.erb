@@ -1,0 +1,19 @@
+<% provide(:title, "Edit user") %>
+<% provide(:button_text, "Save changes") %>
+<h1>Update your profile</h1>
+
+<div class="form">
+
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "form-btn" %>
+<% end %>
+
+</div>

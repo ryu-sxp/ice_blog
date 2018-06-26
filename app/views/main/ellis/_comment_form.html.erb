@@ -1,0 +1,80 @@
+<% if reply_id != '0' %>
+  <% quote = ">#{reply_id}" %>
+<% else %>
+  <% quote = "" %>
+<% end %>
+<div class="modal-text-content" onclick="event.cancelBubble=true">
+<% if @comment_flag %>
+  <% banned = IpBlacklist.where(ip: request.ip) %>
+  <% if banned.empty? %>
+    <%= form_with(model: @comment, remote: true, html: { multipart: true,
+      class: 'comment-form-form' }) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= invisible_captcha %>
+
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control',
+          placeholder: 'optional' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control',
+          placeholder: 'optional' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :website %>
+        <%= f.text_field :website, class: 'form-control',
+          placeholder: 'optional' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :Comment %>
+        <%= f.text_area :content, class: 'form-control',
+          maxlength: 500,
+          value: quote,
+          
+          id: "comment-text-area-#{micropost[:source_model]}"+
+            "-#{micropost[:source_id]}",
+          onkeyup: "IceBlog.inputCount('#{micropost[:source_model]}',"+
+            "#{micropost[:source_id]})"  %>
+      </div>
+      <div class="small-text"
+         id="comment-input-count-<%= micropost[:source_model] %>-<%= micropost[:source_id] %>">
+        0/500
+      </div>
+
+      <%= f.hidden_field :source_model, value: micropost[:source_model] %>
+      <%= f.hidden_field :source_id, value: micropost[:source_id] %>
+
+      <%= f.submit 'Submit Comment', class: 'form-btn' %>
+
+    <% end %>
+    <div class="small-text">
+      Guidelines:
+      <ul>
+        <li>Be reasonable</li>
+        <li>Add a warning if you post a link or reference to a NSFW site</li>
+        <li>No links or references to illegal content or websites hosting such</li>
+      </ul>
+      <%= link_to "Privacy policy", legal_path+'#privacy_policy' %>
+    </div>
+  <% else %>
+    You're banned:<br><br>
+    <%= banned[0].reason %><br><br>
+    This ban expires in
+    <% total_seconds =  banned[0].expires_at - Time.now.to_i %>
+    <% hours = total_seconds / 3600 %>
+    <% minutes = (total_seconds / 60) % 60 %>
+    <% seconds = total_seconds % 60 %>
+    <%= "#{ hours }h #{ minutes }m #{ seconds }s" %>.<br>
+    
+  <% end %>
+<% else %>
+  Sorry, commenting is currently disabled.
+<% end %>
+
+</div>

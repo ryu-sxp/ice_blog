@@ -1,0 +1,18 @@
+<%= form_with(model: image_file, local: true) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+
+  <div class="field">
+    <%= form.label :item %>
+    <% if image_file.item? %>
+      <%= 
+        link_to(image_tag(image_file.item_url(:thumb)), image_file.item_url)
+      %>
+<% end %>
+    <%= form.file_field :item, class: 'form-control' %>
+    <%= form.hidden_field :item_cache %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

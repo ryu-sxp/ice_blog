@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pending Toots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Source model</th>
+      <th>Source</th>
+      <th>Media</th>
+      <th>Requires file</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pending_toots.each do |pending_toot| %>
+      <tr>
+        <td><%= pending_toot.message %></td>
+        <td><%= pending_toot.source_model %></td>
+        <td><%= pending_toot.source_id %></td>
+        <td><%= pending_toot.media_id %></td>
+        <td><%= pending_toot.requires_file %></td>
+        <td><%= link_to 'Show', pending_toot %></td>
+        <td><%= link_to 'Edit', edit_pending_toot_path(pending_toot) %></td>
+        <td><%= link_to 'Destroy', pending_toot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pending Toot', new_pending_toot_path %>

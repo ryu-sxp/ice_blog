@@ -1,0 +1,27 @@
+<h1>Ip Blacklists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ip</th>
+      <th>Duration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ip_blacklists.each do |ip_blacklist| %>
+      <tr>
+        <td><%= ip_blacklist.ip %></td>
+        <td><%= ip_blacklist.duration %></td>
+        <td><%= link_to 'Show', ip_blacklist %></td>
+        <td><%= link_to 'Edit', edit_ip_blacklist_path(ip_blacklist) %></td>
+        <td><%= link_to 'Destroy', ip_blacklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ip Blacklist', new_ip_blacklist_path %>

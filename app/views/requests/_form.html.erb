@@ -1,0 +1,47 @@
+<%= form_with(model: request, local: true) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :referer %>
+    <%= form.text_field :referer, id: :request_referer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :useragent %>
+    <%= form.text_field :useragent, id: :request_useragent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request %>
+    <%= form.text_field :request, id: :request_request %>
+  </div>
+
+  <div class="field">
+    <%= form.label :new_visitor %>
+    <%= form.check_box :new_visitor, id: :request_new_visitor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_bot %>
+    <%= form.check_box :is_bot, id: :request_is_bot %>
+  </div>
+
+  <div class="field">
+    <%= form.label :counter_flag %>
+    <%= form.check_box :counter_flag, id: :request_counter_flag %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

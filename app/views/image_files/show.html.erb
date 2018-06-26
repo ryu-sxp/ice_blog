@@ -1,0 +1,21 @@
+<p>
+  <strong>Name:</strong>
+  <%= @image_file.name %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @image_file.item %>
+</p>
+<% if @image_file.item? %>
+  <%= 
+    link_to(image_tag(@image_file.item_url(:thumb)), @image_file.item_url)
+  %>
+<% end %>
+<p>
+  <strong>Image dimensions:</strong>
+  <%= @image_file.image_dimensions %>
+</p>
+
+<%= link_to 'Edit', edit_image_file_path(@image_file) %> |
+<%= link_to 'Back', image_files_path %>

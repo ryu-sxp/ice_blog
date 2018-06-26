@@ -1,0 +1,31 @@
+<h1>Image Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Item</th>
+      <th>Image dimensions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_files.each do |image_file| %>
+      <tr>
+        <td><%= image_file.id %></td>
+        <td><%= image_file.name %></td>
+        <td><%= image_file.item %></td>
+        <td><%= image_file.image_dimensions %></td>
+        <td><%= link_to 'Show', image_file %></td>
+        <td><%= link_to 'Edit', edit_image_file_path(image_file) %></td>
+        <td><%= link_to 'Destroy', image_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image File', new_image_file_path %>

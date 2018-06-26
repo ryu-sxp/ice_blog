@@ -1,0 +1,29 @@
+<h1>Other Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Item</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @other_files.each do |other_file| %>
+      <tr>
+        <td><%= other_file.id %></td>
+        <td><%= other_file.name %></td>
+        <td><%= other_file.item %></td>
+        <td><%= link_to 'Show', other_file %></td>
+        <td><%= link_to 'Edit', edit_other_file_path(other_file) %></td>
+        <td><%= link_to 'Destroy', other_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Other File', new_other_file_path %>

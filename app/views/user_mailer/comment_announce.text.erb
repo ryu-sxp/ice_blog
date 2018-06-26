@@ -1,0 +1,8 @@
+<% if @comment.source_model == 'blogpost' %>
+  <%= micropost_view_url(
+    source: 'blogpost', id: @comment.source_id) %>
+<% end %>
+<% if @comment.source_model == 'micropost' %>
+  <%= micropost_view_url(
+    source: 'micropost', id: @comment.source_id) %>
+<% end %>

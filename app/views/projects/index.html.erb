@@ -1,0 +1,49 @@
+<h1>Projects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Header ID</th>
+      <th>Published</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.project_header_id %></td>
+        <td><%= project.published %></td>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td>
+          <%= link_to 'Destroy', project, 
+            method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if project.published? %>
+          <td><%= link_to 'Hide', hide_project_path(project),
+            method: :patch, data: 
+            { confirm: 'Are you sure to hide this project?' } %></td>
+        <% else %>
+          <td>
+            <%= link_to 'Publish',
+              publish_project_path(project), method: :patch,
+              data:
+              { confirm: 'Are you sure to publish this project?' }
+            %>
+          </td>
+        <% end %>
+        <% if project.content_update? %>
+          <td><%= link_to 'Update', overwrite_project_path(project),
+            method: :patch, data: 
+            { confirm: 'Are you sure to update this project?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project', new_project_path %>

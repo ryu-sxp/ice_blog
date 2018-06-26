@@ -1,0 +1,2 @@
+class SpamComment < ApplicationRecord
+end

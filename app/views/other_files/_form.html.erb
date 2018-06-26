@@ -1,0 +1,13 @@
+<%= form_with(model: other_file, local: true) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+
+  <div class="field">
+    <%= form.label :item %>
+    <%= form.file_field :item, class: 'form-control' %>
+    <%= form.hidden_field :item_cache %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

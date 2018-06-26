@@ -1,0 +1,42 @@
+<%= form_with(model: project_draft, local: true) do |form| %>
+  <% if project_draft.errors.any? || @header.errors.any? ||
+        @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project_draft.errors.count+@header.errors.count+
+                        @project.errors.count,
+                        "error") %> prohibited this project_draft from being 
+                        saved:</h2>
+
+      <ul>
+      <% project_draft.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      <% @header.errors.full_messages.each do |message| %>
+        <li>(header) <%= message %></li>
+      <% end %>
+      <% @project.errors.full_messages.each do |message| %>
+        <li>(YAML data) <%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :project_draft_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :project_draft_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published %>
+    <%= form.check_box :published, id: :project_draft_published %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

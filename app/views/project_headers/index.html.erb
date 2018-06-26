@@ -1,0 +1,22 @@
+<h1>Project Headers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project_headers.each do |project_header| %>
+      <tr>
+        <td><%= project_header.name %></td>
+        <td><%= link_to 'Show', project_header %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

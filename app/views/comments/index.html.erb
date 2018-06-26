@@ -1,0 +1,41 @@
+<h1>Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Created at</th>
+      <th>Name</th>
+      <th>Trip</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Type</th>
+      <th>Source ID</th>
+      <th>IP</th>
+      <th>Posted by modertaor/admin?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.created_at %></td>
+        <td><%= comment.name %></td>
+        <td><%= comment.trip %></td>
+        <td><%= comment.email %></td>
+        <td><%= comment.website %></td>
+        <td><%= comment.source_model %></td>
+        <td><%= comment.source_id %></td>
+        <td><%= comment.ip %></td>
+        <td><%= comment.moderator_id %></td>
+        <td><%= link_to 'Show', comment %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Comment', new_comment_path %>

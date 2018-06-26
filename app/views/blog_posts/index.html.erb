@@ -1,0 +1,63 @@
+<h1>Blog Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Published date</th>
+      <th>Category ID</th>
+      <th>Toot ID</th>
+      <th>Preview</th>
+      <th>Published</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blog_posts.each do |blog_post| %>
+      <tr>
+        <td><%= blog_post.name %></td>
+        <td><%= blog_post.title %></td>
+        <td><%= blog_post.published_date %></td>
+        <td><%= blog_post.blog_category_id %></td>
+        <td><%= blog_post.toot_id %></td>
+        <td><%= blog_post.preview %></td>
+        <td><%= blog_post.published %></td>
+        <td><%= link_to 'Show', blog_post %></td>
+        <td><%= link_to 'Edit', edit_blog_post_path(blog_post) %></td>
+        <td>
+          <%= link_to 'Destroy', blog_post, 
+            method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if blog_post.published? %>
+          <td><%= link_to 'Hide', hide_blog_post_path(blog_post),
+            method: :patch, data: 
+            { confirm: 'Are you sure to hide this post?' } %></td>
+        <% else %>
+          <td>
+            <%= link_to 'Publish',
+              publish_blog_post_path(blog_post), method: :patch,
+              data:
+              { confirm: 'Are you sure to publish this post?' }
+            %>
+          </td>
+        <% end %>
+        <% unless blog_post.toot_id.present? %>
+          <td><%= link_to 'Repush to mstdn',
+            push_blog_post_to_mstdn_path(blog_post),
+            method: :patch, data: 
+            { confirm: 'Are you sure to push this post?' } %></td>
+        <% end %>
+        <% if blog_post.content_update? %>
+          <td><%= link_to 'Update', overwrite_blog_post_path(blog_post),
+            method: :patch, data: 
+            { confirm: 'Are you sure to update this post?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blog Post', new_blog_post_path %>
