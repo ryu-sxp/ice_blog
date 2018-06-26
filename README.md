@@ -12,6 +12,7 @@ Features
 * comments
 * mail reminders for unpublished content
 * lets you post to a [mastodon][2] instance
+* largely built with themability in mind
 
 Setup
 --
