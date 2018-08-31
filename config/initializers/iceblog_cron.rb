@@ -33,8 +33,8 @@ module IceBlog
     def self.clear_requests
       # TODO send mail with data or write a file before deleting
       # ... really though?
-      Request.where("counter_flag = 't' AND created_at < ?", 1.months.ago.utc).
-        destroy_all
+      Request.where(counter_flag: true).
+        where("created_at < ?", 2.weeks.ago.utc).destroy_all
     end
 
     def self.clear_ip_bans
