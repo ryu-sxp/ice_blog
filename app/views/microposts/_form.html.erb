@@ -30,7 +30,12 @@
     <span>Remove video</span>
   </div>
 
-  <%= f.hidden_field :published_date, value: "#{Time.zone.now}" %>
+  <% if micropost.published_date.present? %>
+    <% pdate = micropost.published_date %>
+  <% else %>
+    <% pdate = "#{Time.zone.now}" %>
+  <% end %>
+  <%= f.hidden_field :published_date, value: pdate %>
 
   <div class="field">
     <%= f.check_box :relevant_media %>
