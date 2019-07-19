@@ -3,7 +3,7 @@ end
 
 module IceBlog
   def self.version
-    '1.0'
+    '1.2'
   end
 
   def self.url

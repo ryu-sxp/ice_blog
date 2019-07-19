@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.1.6.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -39,7 +39,7 @@ gem 'bcrypt',        '~> 3.1'
 gem 'will_paginate', '~> 3.1'
 
 # My additions
-gem 'whenever', '~> 0.9.0', require: false
+gem 'whenever', '~> 0.9', require: false
 gem 'voight_kampff', '~> 1.0'
 gem 'redcarpet', '~> 3.0'
 gem 'rouge', '~> 3.0'
